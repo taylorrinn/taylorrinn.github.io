@@ -1,108 +1,82 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Artist Showcase</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f2f2f2;
-        }
+ <head>
+  <meta charset="utf-8" />
+  <title>Cat Walk</title>
+ </head>
+ <body>
+  
+  <button id="start-button">Start</button>
+  <button id="speed-button">Go Faster!</button>
+  <button id="stop-button">Stop</button>
+  <div id="info"></div>
+  
+  <img style="position:absolute; left: 0px; top: 80px;" src='http://www.anniemation.com/clip_art/images/cat-walk.gif'>
 
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-        }
+  <script>
+var movePixels = 10;
+var delayMs = 50;
+var catTimer = null;
+var img = document.getElementsByTagName('img')[0];
+var walkForwards = true;
+function catWalk() {
+  var currentLeft = parseInt(img.style.left);
+  if (walkForwards && (currentLeft > (window.innerWidth - img.width))) {
+    walkForwards = false;
+  }
+  if (!walkForwards && (currentLeft <= 0)) {
+    walkForwards = true;
+  }
+  if (walkForwards) {
+    img.style.left = (currentLeft + movePixels) + 'px';
+  } else {
+    img.style.left = (currentLeft - movePixels) + 'px';
+  }
+  if ((currentLeft > (window.innerWidth / 2 - (img.width / 2))) && (currentLeft < (window.innerWidth / 2 - (img.width / 2) + 15))) {
+    dancingCat();
+    window.setTimeout(stopDancingCat, 5000);
+  }
+  /*
+  if (currentLeft > (window.innerWidth - img.width)) {
+    img.style.left = '0px';
+  }
+  */
+}
+function startCatWalk() {
+  catTimer = window.setInterval(catWalk, delayMs);
+}
+function speedCat() {
+  movePixels = movePixels + (movePixels * 0.5);
+}
+function onStartClick() {
+	startCatWalk();
+}
+var startButton = document.getElementById('start-button');
+startButton.addEventListener('click', onStartClick);
 
-        h1 {
-            margin: 0;
-        }
+function onStopClick() {
+	window.clearInterval(catTimer);
+}
+function onSpeedClick() {
+  speedCat();
+}
+var speedButton = document.getElementById('speed-button');
+speedButton.addEventListener('click', onSpeedClick);
 
-        nav {
-            background-color: #444;
-            text-align: center;
-            padding: 10px;
-        }
+function dancingCat() {
+  img.src = ('http://eaxan.mobile9.com/download/media/210/cat-dance_cbsoxfnm.gif');
+  movePixels = 0;
+}
+function stopDancingCat() {
+  img.src = ('http://www.anniemation.com/clip_art/images/cat-walk.gif');
+  currentLeft = parseInt(img.style.left);
+  movePixels = 10;
+}
+var stopButton = document.getElementById('stop-button');
+stopButton.addEventListener('click', onStopClick);
 
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 10px;
-        }
 
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+  </script>
 
-        .tab-content {
-            display: none;
-        }
-
-        .active-tab {
-            display: block;
-        }
-
-        .artwork {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .artwork img {
-            max-width: 100%;
-            margin: 10px;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Artist Showcase</h1>
-    </header>
-    <nav>
-        <a href="javascript:void(0)" onclick="openTab('home')">Home</a>
-        <a href="javascript:void(0)" onclick="openTab('gallery')">Gallery</a>
-        <a href="javascript:void(0)" onclick="openTab('about')">About</a>
-        <a href="javascript:void(0)" onclick="openTab('contact')">Contact</a>
-    </nav>
-    <div class="container">
-        <div class="tab-content" id="home">
-            <h2>Welcome to the Gallery</h2>
-            <p>Explore the amazing artworks by our talented artist.</p>
-        </div>
-        <div class="tab-content" id="gallery">
-            <h2>Art Gallery</h2>
-            <div class="artwork">
-                <img src="image1.jpg" alt="Artwork 1">
-                <img src="image2.jpg" alt="Artwork 2">
-                <img src="image3.jpg" alt="Artwork 3">
-                <!-- Add more artwork images here -->
-            </div>
-        </div>
-        <div class="tab-content" id="about">
-            <h2>About the Artist</h2>
-            <p>Learn more about our talented artist and their background.</p>
-        </div>
-        <div class="tab-content" id="contact">
-            <h2>Contact Us</h2>
-            <p>Get in touch with us for inquiries and more information.</p>
-        </div>
-    </div>
-    <script>
-        function openTab(tabName) {
-            var tabContents = document.getElementsByClassName('tab-content');
-            for (var i = 0; i < tabContents.length; i++) {
-                tabContents[i].style.display = 'none';
-            }
-            document.getElementById(tabName).style.display = 'block';
-        }
-    </script>
-</body>
+ </body>
 </html>
