@@ -45,6 +45,7 @@ header {
     margin: 0;
     width: 100%;
     padding: 0.5em;
+    margin-bottom: 100px;
 }
 
 footer {
@@ -93,7 +94,7 @@ nav {
 
   a:link {
     color: white;
-    background-color: #767db8;
+    background-color: blue;
     text-decoration: none;
     padding: 4px;
   }
@@ -135,6 +136,11 @@ nav {
 }
 
 .center-align {
-    margin: 10px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vertical-align {
+    margin: auto;
 }
