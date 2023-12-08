@@ -92,36 +92,36 @@ nav {
     flex-wrap: wrap;
 }
 
-  a:link {
+a:link {
     color: white;
     background-color: blue;
     text-decoration: none;
     padding: 4px;
-  }
+}
 
-  a:visited {
+a:visited {
     color: #ffffff;
     background-color: #767db8;
-  }
-  
-  a:hover {
+}
+
+a:hover {
     color: white;
     background-color: #b89476;
     text-decoration: none;
-  }
-  
-  a:active {
+}
+
+a:active {
     color: #b89476;
     background-color: #b89476;
-  }
+}
 
-  .clearfix::after {
+.clearfix::after {
     content: "";
     display: table;
     clear: both;
 }
 
-  .left-align {
+.left-align {
     float: left;
     margin-right: 10px;
     padding: 30px;
