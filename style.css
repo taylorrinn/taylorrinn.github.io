@@ -45,15 +45,15 @@ header {
     margin: 0;
     width: 100%;
     padding: 0.5em;
-    margin-bottom: 100px;
+    margin-bottom: 10px;
 }
 
 footer {
     background-color: #c0c6f3;
     text-align: center;
-    margin-top: 100px;
     width: 100%;
-    padding: 1em;
+    height: 100px;
+    padding: 0.5em;
     position: absolute;
     bottom: 0;
     
